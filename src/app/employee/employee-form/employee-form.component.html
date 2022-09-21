@@ -1,0 +1,55 @@
+<h4 class="p-3"> Add Employee</h4>
+<form class="container p-2 mt-1 border" [formGroup]="employeeForm" (ngSubmit)="saveEmployeeDetails()">
+    <div class="mb-1 p-1">
+        <label for="name" class="form-label">Name</label>
+        <input class="form-control" id="name" formControlName="name" placeholder="Enter Name">
+        <div
+            *ngIf="employeeForm.get('name')?.invalid&&(employeeForm.get('name')?.dirty||employeeForm.get('name')?.touched)">
+            <small class="text-danger" *ngIf="employeeForm.get('name')?.errors?.['required']">
+                This field is required.
+            </small>
+            <small class="text-danger" *ngIf="employeeForm.get('name')?.errors?.['minlength']">
+                This field must have at least 3 character.
+            </small>
+
+        </div>
+    </div>
+    <div class="mb-1 p-1">
+        <label for="gender" class="form-label">Gender</label>
+        <input class="form-control" id="gender" formControlName="gender" placeholder="Enter Gender">
+        <div
+            *ngIf="employeeForm.get('gender')?.invalid&&(employeeForm.get('gender')?.dirty||employeeForm.get('gender')?.touched)">
+            <small class="text-danger" *ngIf="employeeForm.get('gender')?.errors?.['required']">
+                This field is required.
+            </small>
+            <small class="text-danger" *ngIf="employeeForm.get('gender')?.errors?.['pattern']">
+                Gender is not Valid
+            </small>
+        </div>
+    </div>
+    <div class="mb-1 p-1">
+        <label for="dob" class="form-label">Birthdate</label>
+        <input type="date" class="form-control" id="dob" formControlName="dob" placeholder="Enter Birthdate">
+        <div
+            *ngIf="employeeForm.get('dob')?.invalid&&(employeeForm.get('dob')?.dirty||employeeForm.get('dob')?.touched)">
+            <small class="text-danger" *ngIf="employeeForm.get('dob')?.errors?.['required']">
+                This field is required.
+            </small>
+        </div>
+    </div>
+    <div class="mb-1 p-1">
+        <label for="salary" class="form-label">Salary</label>
+        <input class="form-control" id="salary" formControlName="salary" placeholder="Enter Salary">
+        <div
+            *ngIf="employeeForm.get('salary')?.invalid&&(employeeForm.get('salary')?.dirty||employeeForm.get('salary')?.touched)">
+            <small class="text-danger" *ngIf="employeeForm.get('salary')?.errors?.['required']">
+                This field is required.
+            </small>
+            <small class="text-danger" *ngIf="employeeForm.get('salary')?.errors?.['pattern']">
+                Salary is not Valid
+            </small>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+    <button type="button" class="btn btn-secondary ms-2" (click)="resetForm()">Reset</button>
+</form>

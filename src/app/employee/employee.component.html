@@ -1,0 +1,8 @@
+<div class="w-50 container">
+    <app-employee-form [employeeEdit]="employeeEdit" [resetFormValue]="resetFormValue"></app-employee-form>
+</div>
+<div>
+    <app-employee-list (employeeToEdit)="editEmployee($event)" (resetForm)="resetForm($event)"></app-employee-list>
+</div>
+
+<router-outlet></router-outlet>
